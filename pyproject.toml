@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tidetime"
+version = "0.1.0"
+description = "Human-friendly duration parsing and formatting"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "RaYYeR220" }]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tidetime"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
