@@ -21,6 +21,7 @@ parse_duration("90m")      # timedelta(seconds=5400)
 parse_duration("PT1H30M")  # ISO-8601, same result
 
 format_duration(timedelta(hours=1, minutes=30))  # "1h 30m"
+format_duration(timedelta(hours=1, minutes=30), style="long")  # "1 hour 30 minutes"
 ```
 
 Supported units: `w`, `d`, `h`, `m`, `s`. Fractions such as `1.5h` are allowed.

@@ -30,3 +30,8 @@ def test_iso():
 def test_invalid(bad):
     with pytest.raises(ValueError):
         parse_duration(bad)
+
+
+def test_uppercase_units():
+    assert parse_duration("90M") == timedelta(minutes=90)
+    assert parse_duration("1H30M") == timedelta(hours=1, minutes=30)

@@ -13,8 +13,8 @@ _UNITS = {
     "s": "seconds",
 }
 
-_COMPACT = re.compile(r"^(?:\d+(?:\.\d+)?[wdhms])+$")
-_PART = re.compile(r"(\d+(?:\.\d+)?)([wdhms])")
+_COMPACT = re.compile(r"^(?:\d+(?:\.\d+)?[wdhms])+$", re.IGNORECASE)
+_PART = re.compile(r"(\d+(?:\.\d+)?)([wdhms])", re.IGNORECASE)
 _ISO = re.compile(
     r"^P(?:(?P<days>\d+)D)?(?:T(?:(?P<hours>\d+)H)?(?:(?P<minutes>\d+)M)?"
     r"(?:(?P<seconds>\d+(?:\.\d+)?)S)?)?$"
@@ -41,5 +41,5 @@ def parse_duration(text: str) -> timedelta:
         raise ValueError(f"invalid duration: {text!r}")
     total = timedelta()
     for value, unit in _PART.findall(text):
-        total += timedelta(**{_UNITS[unit]: float(value)})
+        total += timedelta(**{_UNITS[unit.lower()]: float(value)})
     return total
